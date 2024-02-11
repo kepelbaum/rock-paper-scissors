@@ -4,60 +4,49 @@ getComputerChoice = () => {
     rand == 2 ? str = 'Paper' : rand == 1 ? str='Scissors' : str='Rock';
     return str;
 }
-playRound = () => {
-    let playerSelection, computerSelection;
-    let toggle = 0;
-    makeMove = () => {
-        if (toggle == 0) {
-        playerSelection = prompt("Make your move", "");
-        }
-        else if (toggle == 1) {
-        playerSelection = prompt("TIE. Replay the round", "");
-        }
-        else {
-            playerSelection = prompt("Invalid move, try again", "");
-        }
-        playerSelection = playerSelection.slice(0, 1).toUpperCase() + playerSelection.slice(1).toLowerCase();
-        while (playerSelection != "Rock" && playerSelection != 'Scissors' && playerSelection != 'Paper') {
-            toggle = 2;
-            makeMove();
-        }
+playRound = (a) => {
+    let playerSelection = a;
+    let computerSelection = getComputerChoice();
+    if (playerSelection == computerSelection) {
+        return "It's a TIE! Both player chose " + playerSelection + "!";
     }
-    makeMove();
-    computerSelection = getComputerChoice()
-    while (playerSelection == computerSelection) {
-        toggle = 1;
-        makeMove();
-        computerSelection = getComputerChoice();
-    }
-    if (playerSelection == 'Rock' && computerSelection == 'Scissors' || playerSelection == 'Scissors' && computerSelection == 'Paper' || playerSelection == 'Paper' && computerSelection == 'Rock') {
+    else if (playerSelection == 'Rock' && computerSelection == 'Scissors' || playerSelection == 'Scissors' && computerSelection == 'Paper' || playerSelection == 'Paper' && computerSelection == 'Rock') {
         return "You Win! " + playerSelection + " beats " + computerSelection;
     }
     else {
         return "You Lose! " + computerSelection + " beats " + playerSelection;
     }
 }
-game = () => {
-    let playerScore = 0;
-    let computerScore = 0;
-    console.log('Welcome to Rock Paper Scissors! \nPlayer: 0, Computer: 0');
-    let result;
-    while (computerScore < 3 && playerScore < 3) {
-        result = playRound();
-        console.log(result);
+
+let btn = document.querySelectorAll('.button');
+let div = document.querySelector('.display');
+let score = document.querySelector('.score');
+let final = document.querySelector('.final');
+let playerScore = 0, computerScore = 0;
+
+function handleRound(e) {
+    if (playerScore < 5 && computerScore < 5) {
+    let result = playRound(e.target.id);
+    div.textContent = result;
         if (result.slice(0, 7) == 'You Win') {
             playerScore++;
+            if (playerScore == 5) {
+                final.textContent = 'YOU WIN! Well played!'
+            }
         }
         else {
             computerScore++;
+            if (computerScore == 5) {
+                final.textContent = 'YOU LOSE! Better luck next time!'
+            }
         }
-        console.log('Player: ' + playerScore + ', Computer: ' + computerScore);
-    }
-    if (playerScore > computerScore) {
-        console.log('Congratulations, you won!')
-    }
-    if (computerScore > playerScore) {
-        console.log('Too bad, you lost!')
-    }
+        score.textContent = 'Player: ' + playerScore + ', Computer: ' + computerScore;
+    }     
 }
-game();
+
+btn.forEach((button) => {
+    button.addEventListener('click', handleRound);
+});
+
+
+
