@@ -4,13 +4,36 @@
 <head>
     <title>Rock, Paper, Scissors!</title>
     <meta charset="UTF-8">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            gap: 30px;
+        }
+
+        .newgame {
+            width: 200px;
+            height: 50px;
+        }
+
+        .wrapper button {
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
-    <button class="button" id='Rock'>Rock</button>
-    <button class="button" id='Paper'>Paper</button>
-    <button class="button" id='Scissors'>Scissors</button>
-    <div class="display"></div>
-    <div class="score"></div>
-    <div class="final"></div>
+    <h1> Rock, Paper, Scissors! </h1>
+    <div class="wrapper">
+    <button class="button"><img src='https://images.unsplash.com/photo-1614032686163-bdc24c13d0b6?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='Rock' id='Rock' width=100 height=100></button>
+    <button class="button"><img src='https://images.unsplash.com/photo-1614032686158-b880f7e82c18?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='Paper' id="Paper" width=100 height=100></button>
+    <button class="button"><img src='https://images.unsplash.com/photo-1614032686099-e648d6dea9b3?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='Scissors' id="Scissors" width=100 height=100></button>
+</div>
+        <div class="display"></div>
+        <div class="score"></div>
+        <div class="final"></div>
+        <button class="newgame">New Game</button>
 </body>
 </html>

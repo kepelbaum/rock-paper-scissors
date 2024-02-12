@@ -22,7 +22,9 @@ let btn = document.querySelectorAll('.button');
 let div = document.querySelector('.display');
 let score = document.querySelector('.score');
 let final = document.querySelector('.final');
+let newgame = document.querySelector('.newgame');
 let playerScore = 0, computerScore = 0;
+score.textContent = 'Player: ' + playerScore + ', Computer: ' + computerScore;
 
 function handleRound(e) {
     if (playerScore < 5 && computerScore < 5) {
@@ -48,5 +50,13 @@ btn.forEach((button) => {
     button.addEventListener('click', handleRound);
 });
 
+newgame.addEventListener('click', restartGame);
 
+function restartGame() {
+    playerScore = 0;
+    computerScore = 0;
+    score.textContent = 'Player: ' + playerScore + ', Computer: ' + computerScore;
+    final.textContent = '';
+    div.textContent = '';
+}
 
