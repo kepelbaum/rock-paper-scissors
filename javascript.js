@@ -36,7 +36,7 @@ function handleRound(e) {
                 final.textContent = 'YOU WIN! Well played!'
             }
         }
-        else {
+        else if (result.slice(0, 8) == 'You Lose') {
             computerScore++;
             if (computerScore == 5) {
                 final.textContent = 'YOU LOSE! Better luck next time!'
