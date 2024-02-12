@@ -1,1 +1,1 @@
-A simple rock-paper-scissors best-of-five javascript game.
+A simple rock-paper-scissors first-to-five javascript game.
